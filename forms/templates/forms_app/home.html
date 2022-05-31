@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+</head>
+<body>
+<form method="POST" action="create/">
+    {% csrf_token %}
+    <p>
+        <label>Enter user name</label><br>
+        <input type="text" name="name" />
+    </p>
+    <p>
+        <label>Enter user age</label><br>
+        <input type="number" name="age" />
+    </p>
+    <p>
+        <label>Enter user birthday</label><br>
+        <input type="date" name="birth" />
+    </p>
+    <input type="submit" value="Save">
+</form>
+{% if user.count > 0 %}
+    <table>
+     <caption>Enter Users</caption>
+        <tr>
+            <th>Id</th><th>Name</th><th>Age</th><th>Birth</th>
+        </tr>
+        {% for u in user %}
+            <tr>
+                <td>{{u.id}}</td><td>{{u.name}}</td><td>{{u.age}}</td><td>{{u.birth}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+</body>
+</html>
