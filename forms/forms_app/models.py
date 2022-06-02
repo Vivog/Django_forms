@@ -7,3 +7,4 @@ class User(models.Model):
     age = models.IntegerField()
     birth = models.DateField()
     objects = models.Manager()
+    DoesNotExist = models.Manager()
